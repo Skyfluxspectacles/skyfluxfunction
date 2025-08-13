@@ -20,55 +20,74 @@
       --border2:rgba(255,255,255,.1);
     }
     *{box-sizing:border-box}
+    html,body{height:100%}
     body{
       margin:0;
       font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,Arial;
       color:var(--text);
       background:linear-gradient(180deg,var(--deep1),var(--deep2));
-      text-align:center;
     }
-    .container{max-width:1200px;margin:0 auto;padding:0 24px}
-    header{padding:24px 0;border-bottom:1px solid var(--border2)}
-    .brand{display:flex;flex-direction:column;align-items:center;gap:8px}
-    /* LOGO A TAMAÑO ORIGINAL (limitado solo por ancho de la página) */
-    .logo-full{display:block;margin:0 auto 6px;width:auto;height:auto;max-width:100%}
-    h1{margin:0;font-size:28px;letter-spacing:-.01em}
-    .tagline{margin:6px 0 0 0;color:var(--electric);font-weight:700;font-size:18px}
-    main{padding:48px 0}
-    a{color:var(--electric);text-decoration:none}
-    footer{margin-top:40px;padding:20px;border-top:1px solid var(--border2);font-size:14px;color:var(--muted2)}
-    .bg-glow{pointer-events:none;position:fixed;inset:0;z-index:-1;
+    /* Página a una sola pantalla, sin scroll */
+    .page{
+      height:100vh;             /* fallback */
+      height:100dvh;            /* usa la altura visible real (móvil) */
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:flex-start;
+      padding:24px;
+      gap:16px;
+      text-align:center;
+      overflow:hidden;          /* evita scroll si algo se pasa por 1px */
+      position:relative;
+    }
+    .bg-glow{pointer-events:none;position:absolute;inset:0;z-index:-1;
       background:
         radial-gradient(1200px 800px at 20% 10%, rgba(0,181,255,.10), transparent 60%),
         radial-gradient(900px 600px at 80% 0%, rgba(0,181,255,.12), transparent 60%),
         radial-gradient(1000px 700px at 50% 120%, rgba(0,181,255,.10), transparent 60%)}
+    .brand{display:flex;flex-direction:column;align-items:center;gap:8px;margin-top:4px}
+    /* Logo adaptable: se limita por altura de la pantalla para evitar scroll */
+    .logo{
+      display:block;margin:0 auto 4px;
+      width:auto;height:auto;
+      max-width:min(92vw, 800px);
+      max-height:40vh;   /* fallback */
+      max-height:28dvh;  /* principal: ~28% de la altura visible */
+    }
+    h1{margin:0;font-size:clamp(18px,2.4dvh,24px);letter-spacing:-.01em}
+    .tagline{margin:2px 0 0 0;color:var(--electric);font-weight:700;font-size:clamp(16px,2.2dvh,18px)}
+    .links{display:flex;flex-direction:column;gap:8px;align-items:center;margin-top:8px}
+    a{color:var(--electric);text-decoration:none}
+    .spacer{flex:1}  /* empuja el footer hacia abajo */
+    footer{padding-top:8px;border-top:1px solid var(--border2);font-size:14px;color:var(--muted2);width:100%}
+    .wrap{width:100%;max-width:1200px;padding:0 24px;margin:0 auto}
   </style>
 </head>
 <body>
-  <div class="bg-glow"></div>
+  <div class="page">
+    <div class="bg-glow"></div>
 
-  <header>
-    <div class="container">
-      <div class="brand">
-        <!-- LOGO sin límites fijos -->
-        <img src="logo-skyflux.png" alt="Skyflux logo" class="logo-full">
-        <h1>SKYFLUX <span style="color:var(--electric)">SPECTACLES</span></h1>
-        <p class="tagline">🚧 En construcción</p>
-      </div>
+    <div class="brand wrap">
+      <img src="logo-skyflux.png" alt="Skyflux logo" class="logo">
+      <h1>SKYFLUX <span style="color:var(--electric)">SPECTACLES</span></h1>
+      <p class="tagline">🚧 En construcción</p>
     </div>
-  </header>
 
-  <main>
-    <div class="container" style="display:flex;flex-direction:column;gap:12px;align-items:center">
+    <div class="links wrap">
       <p>📧 <a href="mailto:info@skyfluxspectacles.com">info@skyfluxspectacles.com</a></p>
       <p>📷 <a href="https://www.instagram.com/skyfluxspectacles/" target="_blank" rel="noreferrer">Instagram</a></p>
     </div>
-  </main>
 
-  <footer>
-    <div class="container">© <span id="year"></span> SKYFLUX SPECTACLES</div>
-  </footer>
+    <div class="spacer"></div>
 
-  <script>document.getElementById('year').textContent=new Date().getFullYear();</script>
+    <footer>
+      <div class="wrap">© <span id="year"></span> SKYFLUX SPECTACLES</div>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
