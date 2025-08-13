@@ -3,39 +3,77 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>SKYFLUX SPECTACLES — Drone Light Shows</title>
-  <meta name="description" content="Espectáculos de drones a gran escala (600+). Alternativa sostenible a los fuegos artificiales. Galicia · España." />
+  <title>SKYFLUX SPECTACLES — En construcción</title>
+  <meta name="description" content="Sitio en construcción. Contacto e Instagram de SKYFLUX SPECTACLES." />
+  <meta property="og:title" content="SKYFLUX SPECTACLES — En construcción" />
+  <meta property="og:description" content="En construcción. Escríbenos a info@skyfluxspectacles.com" />
+  <meta property="og:type" content="website" />
   <meta property="og:image" content="/logo-skyflux.png" />
   <meta name="theme-color" content="#00B5FF" />
   <style>
-    body {
-      margin: 0;
-      font-family: system-ui, sans-serif;
-      color: #e5e7eb;
-      background: linear-gradient(180deg, #0B1221, #05080F);
-      text-align: center;
+    :root{
+      --electric:#00B5FF;
+      --deep1:#0B1221;
+      --deep2:#05080F;
+      --text:#e5e7eb;
+      --muted:#cbd5e1;
+      --muted2:#94a3b8;
+      --border:rgba(255,255,255,.12);
+      --border2:rgba(255,255,255,.1);
     }
-    header { padding: 20px; border-bottom: 1px solid rgba(255,255,255,0.1); }
-    img.logo { max-width: 200px; margin: 20px auto; display: block; }
-    h1 { color: #00B5FF; }
-    a { color: #00B5FF; text-decoration: none; }
-    footer { margin-top: 40px; padding: 20px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 14px; color: #94a3b8; }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,Arial;
+      color:var(--text);
+      background:linear-gradient(180deg,var(--deep1),var(--deep2));
+      text-align:center;
+    }
+    .container{max-width:1200px;margin:0 auto;padding:0 24px}
+    header{padding:24px 0;border-bottom:1px solid var(--border2)}
+    .brand{display:flex;flex-direction:column;align-items:center;gap:8px}
+    .brand-logo{height:88px;width:88px;border-radius:16px;overflow:hidden;border:1px solid rgba(0,181,255,.4);
+      background:radial-gradient(60% 60% at 50% 50%, rgba(0,181,255,.25), transparent 70%);display:flex;align-items:center;justify-content:center;padding:10px;margin-bottom:6px}
+    .brand-logo img{max-width:100%;max-height:100%;object-fit:contain}
+    h1{margin:0;font-size:28px;letter-spacing:-.01em}
+    .tagline{margin:6px 0 0 0;color:var(--electric);font-weight:700;font-size:18px}
+    main{padding:48px 0}
+    .links{display:flex;flex-direction:column;gap:12px;align-items:center}
+    a{color:var(--electric);text-decoration:none}
+    footer{margin-top:40px;padding:20px;border-top:1px solid var(--border2);font-size:14px;color:var(--muted2)}
+    .bg-glow{pointer-events:none;position:fixed;inset:0;z-index:-1;
+      background:
+        radial-gradient(1200px 800px at 20% 10%, rgba(0,181,255,.10), transparent 60%),
+        radial-gradient(900px 600px at 80% 0%, rgba(0,181,255,.12), transparent 60%),
+        radial-gradient(1000px 700px at 50% 120%, rgba(0,181,255,.10), transparent 60%)}
   </style>
 </head>
 <body>
+  <div class="bg-glow"></div>
+
   <header>
-    <img src="logo-skyflux.png" alt="Skyflux logo" class="logo">
-    <h1>SKYFLUX SPECTACLES</h1>
-    <p>Espectáculos de drones a gran escala (600+ drones)</p>
+    <div class="container">
+      <div class="brand">
+        <div class="brand-logo"><img src="logo-skyflux.png" alt="Skyflux logo"></div>
+        <h1>SKYFLUX <span style="color:var(--electric)">SPECTACLES</span></h1>
+        <p class="tagline">🚧 En construcción</p>
+      </div>
+    </div>
   </header>
+
   <main>
-    <p>Alternativa sostenible a los fuegos artificiales. Coreografías con más de 600 drones iluminando el cielo.</p>
-    <p>📧 <a href="mailto:info@skyfluxspectacles.com">info@skyfluxspectacles.com</a></p>
-    <p>📷 <a href="https://www.instagram.com/skyfluxspectacles/" target="_blank">Instagram</a></p>
+    <div class="container">
+      <div class="links">
+        <p>📧 <a href="mailto:info@skyfluxspectacles.com">info@skyfluxspectacles.com</a></p>
+        <p>📷 <a href="https://www.instagram.com/skyfluxspectacles/" target="_blank" rel="noreferrer">Instagram</a></p>
+      </div>
+    </div>
   </main>
+
   <footer>
-    © <span id="year"></span> SKYFLUX SPECTACLES
+    <div class="container">© <span id="year"></span> SKYFLUX SPECTACLES</div>
   </footer>
+
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
